@@ -2,26 +2,37 @@ drop database if exists Projeto_Estufa;
 create database  Projeto_Estufa; 
 use  Projeto_Estufa;
 
-create  table cliente (
-id_cliente     int(6)  not null primary key auto_increment,
- nome  varchar  (80) not null,
- cpf   varchar (14) unique not null,
- email varchar (50) not null,
- celular varchar (15) not null,
- data_nasc date   null
+CREATE TABLE cliente (
+    id_cliente INT(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(80) NOT NULL,
+    cpf VARCHAR(14) UNIQUE NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    celular VARCHAR(15) NOT NULL,
+    data_nasc DATE NULL
+);
  
- );
  
+ CREATE TABLE higrometro (
+    id_higrometro INT(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    temp_interna DECIMAL(4 , 2 ),
+    temp_externa DECIMAL(4 , 2 ),
+    umid_ar DECIMAL(4 , 2 ),
+    umid_solo DECIMAL(4 , 2 )
+);
  
- create table higrometro (
- id_higrometro       int (6) not null primary key auto_increment,
- -- id_cliente int 
- temp_interna decimal (4,2),
- temp_externa decimal (4,2),
- umid_ar decimal (4,2),
- umid_solo decimal (4,2)
--- data_medicao datetime --
- );
+CREATE TABLE irrigacao (
+    id_irrigacao INT(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_higrometro INT,
+    horario_irrigacao DATETIME,
+    FOREIGN KEY (id_higrometro)
+        REFERENCES higrometro (id_higrometro)
+);  
+
+
+
+
+
+
  
 
  
