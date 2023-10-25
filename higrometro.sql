@@ -20,8 +20,8 @@ CREATE TABLE cliente (
     umid_solo DECIMAL(4 , 2 )
 );
  
-CREATE TABLE irrigacao (
-    id_irrigacao INT(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE cultivo (
+    id_cultivo INT(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_higrometro INT,
     horario_irrigacao DATETIME,
     FOREIGN KEY (id_higrometro)
